@@ -1,0 +1,139 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --panel-width: 350px;
+  --main-font: 'roboto';
+  --second-font: 'open sans';
+  --font-main-color: #424242;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+button {
+  border: none;
+}
+
+a {
+  color: inherit;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(122, 133, 153);
+  padding: 100px 0 100px var(--panel-width);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  font-family: var(--main-font)
+}
+
+.page_a4 {
+  width: 210mm;
+  height: 297mm;
+  background-color: #fff;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.block {
+  position: absolute;
+  display: inline-block;
+  touch-action: none;
+  user-select: none;
+}
+
+.text {
+  color: var(--font-main-color);
+}
+
+.text-primary {
+  font-family: var(--main-font);
+}
+
+.text-secondary {
+  font-family: var(--second-font);
+}
+
+.box_underline:after {
+  content: ' ';
+  display: block;
+  width: 30px;
+  height: 3px;
+  margin-top: 2px;
+  background-color: var(--font-main-color);
+}
+
+.panel {
+  width: var(--panel-width);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 35px;
+  z-index: 2;
+}
+
+.panel_title {
+  font-family: var(--second-font);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 10px 0;
+}
+
+.btn {
+  display: block;
+  padding: 10px;
+  border-radius: 2px;
+  font-family: var(--main-font);
+  cursor: pointer;
+  background-color: #64B5F6;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.btn:hover {
+  background-color: #2196F3;
+}
+
+.select {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px
+}
+
+.downloadPanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  width: 100%;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 25px;
+}
+
+.downloadPanel  > .btn {
+  width: 200px;
+  margin-bottom: 0;
+}
