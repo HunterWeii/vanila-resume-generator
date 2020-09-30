@@ -213,6 +213,30 @@ const {
   pageAddItem
 } = app();
 
+function link() {
+  let domID = "";
+  const linkPanel = document.querySelector('#panelLink');
+  const input = linkPanel.querySelector('input');
+
+  input.addEventListener('change', (event) => {
+    if (domID === '') return;
+    const linkBlock = document.querySelector(`#${domID} > a`);
+    linkBlock.setAttribute('href', event.target.value)
+  });
+
+  return {
+    toggleLinkPanel: (toShow) => linkPanel.style.display = toShow ? 'block' : 'none',
+    setDOMID: id => domID = id,
+    resetDomID: () => domID = ""
+  }
+}
+
+const {
+  toggleLinkPanel,
+  setDOMID,
+  resetDomID
+} = link()
+
 /**
  *   Event
  */
@@ -281,17 +305,31 @@ const eventDownloadPDF = () => {
     .set({
       filename:     'myfile.pdf',
       image:        { type: 'png', quality: 1 },
-      html2canvas:  { scale: 2 },
+      html2canvas:  { scale: 1 },
     })
     .from(pages)
     .save();
 };
 
+const eventLinkAction = (event) => {
+  const { tagName } = event.target;
+  const isLink = tagName.toLowerCase() === 'a';
+
+  if(isLink) {
+    const id = event.target.parentElement.id;
+    toggleLinkPanel(true);
+    setDOMID(id);
+  } else {
+    toggleLinkPanel(false);
+    resetDomID();
+  }
+}
+
 /**
  *   utils
  */
 const utils = {
-  randomID: () => Math.random(1,1000).toString(16).slice(2)
+  randomID: () => `block_${Math.random(1,1000).toString(16).slice(2)}`
 };
 
 /**
@@ -314,6 +352,9 @@ function main() {
 
   const downloadPDF = document.querySelector('#downloadPDF');
   downloadPDF.addEventListener('click', eventDownloadPDF);
+
+  const app = document.querySelector('#appPDF');
+  app.addEventListener('click', eventLinkAction)
 }
 
 main();

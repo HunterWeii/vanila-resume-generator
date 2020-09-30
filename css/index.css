@@ -85,6 +85,7 @@ a {
   background-color: #fff;
   padding: 35px;
   z-index: 2;
+  overflow-y: scroll;
 }
 
 .panel_title {
@@ -136,4 +137,22 @@ a {
 .downloadPanel  > .btn {
   width: 200px;
   margin-bottom: 0;
+}
+
+.panel_link {
+  position: fixed;
+  width: 350px;
+  background-color: #fff;
+  right: 20px;
+  top: 120px;
+  padding: 15px;
+}
+
+.panel_link > .panel_title {
+  padding-top: 0
+}
+
+.panel_link > input {
+  width: 100%;
+  padding: 5px;
 }
